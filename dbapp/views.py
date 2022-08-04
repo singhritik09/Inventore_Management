@@ -2,7 +2,7 @@ from urllib import request
 from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import is_valid_path
 from .models import Employee ,Inventory
-from .forms import EmployeeForm
+from .forms import EmployeeForm, InventoryForm
 
 from django.contrib import messages
 # Create your views here.
@@ -23,7 +23,18 @@ def add(request):
         # return render(request,'add.html',{})
     else:
         return render(request,'add.html',{})
+
+def add_inventory(request):
     
+    if request.method=='POST':
+        form=InventoryForm(request.POST or redirect('inventory'))
+        if form.is_valid():
+            form.save()
+        messages.success(request,('Item successfully added to Inventory'))
+        
+    else:
+        return render(request,'add_inventory.html',{})
+
 def inventory(request):
     inventories=Inventory.objects.all()
     context={

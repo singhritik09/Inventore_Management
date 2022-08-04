@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block  content%}
+<div class="container">
+  <br><br>
+  <h2>Add details of Employee</h2>
+  <br>
+</div>
+<form method="POST" action="{% url 'add_inventory' %}">
+  {% csrf_token %}
+  <div class="form-group">
+      
+    <input type="text" name="inid"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter ID">
+    
+</div>
+    <div class="form-group">
+      
+        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+        
+      </div>
+    
+      <div class="form-group">
+      
+        <input type="text" name="cost" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Cost">
+        
+    </div>
+
+    <div class="form-group">
+      
+      <input type="text"  name="quantity" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Quantity">
+      
+    </div>
+   <div class="form-group">
+      
+      <input type="text" name="quantity_sold" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Quantity Sold">
+
+    </div>
+    <div class="form-group">
+      
+      <input type="text" name="sales" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sales">
+      
+    </div>
+
+   
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+  
+
+{% endblock  %}

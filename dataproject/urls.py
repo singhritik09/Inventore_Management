@@ -20,7 +20,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('dbapp.urls')),
     path('add/',include('dbapp.urls')), 
+    path('add_inventory',include('dbapp.urls')),
     path('inventory/',include('dbapp.urls')),
+    
     # path('product/',include('dbapp.urls')),
     path('product/<int:pk>',include('dbapp.urls'))
 ]
