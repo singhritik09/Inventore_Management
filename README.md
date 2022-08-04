@@ -1,2 +1,2 @@
-# Inventore_Management
+# Inventory_Management
 DBMS Project
