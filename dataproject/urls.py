@@ -24,5 +24,6 @@ urlpatterns = [
     path('inventory/',include('dbapp.urls')),
     
     # path('product/',include('dbapp.urls')),
-    path('product/<int:pk>',include('dbapp.urls'))
+    path('product/<int:pk>',include('dbapp.urls')),
+    path('delete/<int:pk>',include('dbapp.urls')),
 ]

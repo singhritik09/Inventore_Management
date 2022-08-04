@@ -1,6 +1,7 @@
 from urllib import request
 from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import is_valid_path
+from requests import delete
 from .models import Employee ,Inventory
 from .forms import EmployeeForm, InventoryForm
 
@@ -27,11 +28,11 @@ def add(request):
 def add_inventory(request):
     
     if request.method=='POST':
-        form=InventoryForm(request.POST or redirect('inventory'))
+        form=InventoryForm(request.POST or None)
         if form.is_valid():
             form.save()
         messages.success(request,('Item successfully added to Inventory'))
-        
+        return redirect('inventory')
     else:
         return render(request,'add_inventory.html',{})
 
@@ -51,3 +52,8 @@ def product(request,pk):
         'inventory':inventory
     }
     return render(request,"product.html",context=context)
+
+def delete_inventory(request,pk):
+    inventory=get_object_or_404(Inventory,pk=pk)
+    inventory.delete()
+    return redirect('inventory')

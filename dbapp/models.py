@@ -34,8 +34,8 @@ class Inventory(models.Model):
     quantity=models.IntegerField(null=False,blank=False)
     quantity_sold=models.IntegerField(null=False,blank=False)
     sales=models.IntegerField(null=False,blank=False)
-    stock_date=models.DateField(auto_now_add=True)
-    last_sale=models.DateField(auto_now_add=True)
+    stock_date=models.DateField(auto_now_add=True,null=True)
+    last_sale=models.DateField(auto_now_add=True,null=True)
     
     
     class Meta:
