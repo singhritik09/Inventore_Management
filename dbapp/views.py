@@ -1,5 +1,5 @@
 from urllib import request
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import is_valid_path
 from .models import Employee ,Inventory
 from .forms import EmployeeForm
@@ -31,3 +31,12 @@ def inventory(request):
         "inventories": inventories
     }
     return render(request,'inventory.html',context=context)
+
+def per_product_view(request,pk):
+    
+    inventory=get_object_or_404(Inventory,pk=pk)
+    
+    context={
+        'inventory':inventory
+    }
+    return render(request,"per_product.html",context=context)
