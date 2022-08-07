@@ -42,3 +42,37 @@ class Inventory(models.Model):
         managed=False
         db_table='Inventory'
         
+        
+# class Managers(models.Model):
+#     id = models.ForeignKey(Employee,null=False)
+#     name=models.ForeignKey(Employee,null=False)
+#     field=models.CharField(max_length=50,null=False)
+    
+#     class Meta:
+#         managed=False
+#         db_table='Managers'
+
+
+
+# class Marble(models.Model):
+#     id = models.IntegerField(primary_key=True,null=False)
+#     name=models.CharField(max_length=50,null=False)
+#     cost=models.IntegerField(null=False)
+#     type=models.ForeignKey(Inventory,null=False)
+#     quantity=models.IntegerField(null=False)
+    
+#     class Meta:
+#         managed=False
+#         db_table='Marble'
+        
+# class Granite(models.Model):
+#     id=models.IntegerField(primary_key=True)
+#     name=models.CharField(max_length=50,null=False)
+#     cost=models.IntegerField(null=False)
+#     type=models.ForeignKey(Inventory,null=False)
+    
+#     class Meta:
+#         managed=False
+#         db_table='Granite'
+        
+        

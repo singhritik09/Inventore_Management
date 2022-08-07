@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+    <h2>Employee</h2>
+    {% for item in ts %}
+    ID: {{ item.id }}
+    Name: {{ item.name }}
+    <br>
+    <hr>
+    {% endfor %}
+
+{% endblock %}
