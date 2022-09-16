@@ -1,7 +1,23 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block content %}
+<br>
+<br>
 
-hello
+{% for item in all %}
+
+<h3>Max Sold: {{ item.name }}<h3>
+<h2>Sales: {{item.sales}}<h2>
+<hr>
+
+{% endfor %}
+<hr><hr>
+{% for item1 in all2 %}
+
+<h3>Second: {{ item1.name }}<h3>
+<h3>Sales: {{item1.sales}}<h3>
+<hr>
+
+{% endfor %}
 
 {% endblock %}

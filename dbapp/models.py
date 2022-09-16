@@ -13,15 +13,6 @@ class Department(models.Model):
         managed = False
         db_table = 'department'
 
-class Department(models.Model):
-    pid = models.IntegerField(primary_key=True)
-    pname = models.CharField(max_length=25, blank=True, null=True)
-    location = models.CharField(max_length=25, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'department'
-
 
 class Employee(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -42,7 +33,7 @@ class Employee(models.Model):
         
 
 class Inventory(models.Model):
-    inid=models.IntegerField(primary_key=True,unique=True)
+    inid=models.IntegerField(primary_key=True)
     name=models.CharField(max_length=100,null=False,blank=False)
     cost=models.IntegerField(null=False)
     quantity=models.IntegerField(null=False,blank=False)

@@ -57,6 +57,12 @@ def inventory(request):
     }
     return render(request,'inventory.html',context=context)
 
+def max_sale(request):
+    all_ms=Inventory.objects.raw("SELECT * FROM Inventory where sales IN(SELECT MAX(sales) from Inventory)")
+    s_m=Inventory.objects.raw("SELECT * FROM Inventory where sales IN(SELECT MAX(sales) from Inventory where sales <>(SELECT MAX(sales) from Inventory))")
+    return render(request,"max_sale.html",{'all':all_ms,'all2':s_m})
+
+
 def product(request,pk):
     
     inventory=get_object_or_404(Inventory, pk=pk)
