@@ -6,13 +6,13 @@
   <h2>Update Inventory</h2>
   <br>
 </div>
-<form method="POST" action="{% url 'update_inventory' %}">
+<form method="POST" action="">
   {% csrf_token %}
-  <div class="form-group">
+  {% comment %} <div class="form-group">
       
     <input type="text" name="inid"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter ID">
     
-</div>
+</div> {% endcomment %}
     <div class="form-group">
       
         <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">

@@ -19,6 +19,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('dbapp.urls')),
+    path('managers/',include('dbapp.urls')),
+    path('department/',include('dbapp.urls')),
     path('add/',include('dbapp.urls')), 
     path('add_inventory',include('dbapp.urls')),
     path('inventory/',include('dbapp.urls')),
@@ -26,6 +28,6 @@ urlpatterns = [
     # path('product/',include('dbapp.urls')),
     path('product/<int:pk>',include('dbapp.urls')),
     path('delete/<int:pk>',include('dbapp.urls')),
-    path('update_inventory/<int:pk>',include('dbapp.urls')),
-    path('test',include('dbapp.urls')),
+    path('update_inventory/<up_id>',include('dbapp.urls')),
+    # path('test',include('dbapp.urls')),
 ]

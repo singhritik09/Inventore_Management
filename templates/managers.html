@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br>
+    <h2>Managers</h2>
+    <hr>
+    <hr>
+    {% for item in all %}
+    {% comment %} ID: {{ item.id }} {% endcomment %}
+    Name: {{ item.name }}
+    Contact: {{item.phone}}
+    <hr>
+
+    {% endfor %}
+
+
+{% endblock %}

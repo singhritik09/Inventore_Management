@@ -1,9 +1,10 @@
+from multiprocessing import context
 from urllib import request
 from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import is_valid_path
-from matplotlib.style import context
 from requests import delete
-from .models import Employee ,Inventory
+
+from .models import Employee ,Inventory, Managers,Department
 from .forms import EmployeeForm, InventoryForm,UpdateInventoryForm
 
 from django.contrib import messages
@@ -12,14 +13,18 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    all_employee=Employee.objects.all()
-    
+    all_employee=Employee.objects.raw("SELECT e.id,e.name,d.pname FROM Employee as e LEFT JOIN Department as d ON e.did=d.pid")
     return render(request,'index.html',{'all':all_employee})
 
-def test(request):
-    check= Employee.objects.filter(id=2)
-    return render(request,'test.html',{'ts':check})
+def managers(request):
+    all_managers=Managers.objects.raw("SELECT * FROM Managers")
+    
+    return render(request,"managers.html",{'all':all_managers})
 
+def department(request):
+    all_dept=Department.objects.raw("SELECT * from Department")
+    return render(request,"department.html",{'all':all_dept})
+    
 def add(request):
     if request.method=='POST':
         form=EmployeeForm(request.POST or None)
@@ -42,6 +47,7 @@ def add_inventory(request):
         return redirect('inventory')
     else:
         return render(request,'add_inventory.html',{})
+
 
 def inventory(request):
     inventories=Inventory.objects.all()
@@ -66,21 +72,19 @@ def delete_inventory(request,pk):
     
     return redirect('inventory')
 
-def update_inventory(request, pk):
-    inventory=get_object_or_404(Inventory,pk=pk)
-    if request.method =='POST':
-        form=UpdateInventoryForm(data=request.POST)
-        if form.is_valid():
-            inventory.name=form.data['name']
-            inventory.cost=form.data['cost']
-            inventory.quantity=form.data['quantity']
-            inventory.quantity_sold=form.data['quantity_sold']
-            inventory.sales=form.data['sales']
+
+def update_inventory(request,up_id):
+    inventory=Inventory.objects.get(pk=up_id)
+    form=InventoryForm(data=request.POST or None,instance=inventory)
+    if form.is_valid():
+        print(inventory.cost)
+        print("Check")
+        form.save()
+        return redirect('inventory')
         
-            inventory.save()
+
         
-            messages.success(request,("Updated Inventory"))
-            return redirect('product/{pk}')
-    else:
-        
-        return render(request,'update_inventory.html',{})
+    context = {'form': form, 'inventory': inventory}
+    print("Last part")
+    return render(request, 'update_inventory.html', context=context)
+
