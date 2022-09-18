@@ -3,15 +3,24 @@
 
 <br>
     <h2>Departments</h2>
-    <hr>
-    <hr>
-    {% for item in all %}
-    {% comment %} ID: {{ item.id }} {% endcomment %}
-    Name: {{ item.pname }}
-    City: {{item.location}}
-    <hr>
-
-    {% endfor %}
+    <table class="table table-stripped table-bordered table-hovet">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for  item in all %}
+            <tr>
+                
+                <th scope="row"> {{ item.pname }}</th>
+                <th scope="row"> {{ item.location }}</th>     
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
 {% endblock %}

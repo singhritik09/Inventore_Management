@@ -5,7 +5,7 @@ from django.urls import is_valid_path
 from requests import delete
 
 from .models import Employee ,Inventory, Managers,Department
-from .forms import EmployeeForm, InventoryForm,UpdateInventoryForm
+from .forms import EmployeeForm, InventoryForm
 
 from django.contrib import messages
 
@@ -13,7 +13,7 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    all_employee=Employee.objects.raw("SELECT e.id,e.name,d.pname FROM Employee as e LEFT JOIN Department as d ON e.did=d.pid")
+    all_employee=Employee.objects.raw("SELECT e.id,e.name,d.pname FROM Employee as e INNER JOIN Department as d ON e.did=d.pid")
     return render(request,'index.html',{'all':all_employee})
 
 def managers(request):
@@ -79,18 +79,18 @@ def delete_inventory(request,pk):
     return redirect('inventory')
 
 
-def update_inventory(request,up_id):
-    inventory=Inventory.objects.get(pk=up_id)
-    form=InventoryForm(data=request.POST or None,instance=inventory)
-    if form.is_valid():
-        print(inventory.cost)
-        print("Check")
-        form.save()
-        return redirect('inventory')
+# def update_inventory(request,up_id):
+#     inventory=Inventory.objects.get(pk=up_id)
+#     form=InventoryForm(data=request.POST or None,instance=inventory)
+#     if form.is_valid():
+#         print(inventory.cost)
+#         print("Check")
+#         form.save()
+#         return redirect('inventory')
         
 
         
-    context = {'form': form, 'inventory': inventory}
-    print("Last part")
-    return render(request, 'update_inventory.html', context=context)
+#     context = {'form': form, 'inventory': inventory}
+#     print("Last part")
+#     return render(request, 'update_inventory.html', context=context)
 

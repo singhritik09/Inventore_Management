@@ -12,8 +12,3 @@ class InventoryForm(forms.ModelForm):
         model=Inventory
         fields=['inid','name','cost','quantity','quantity_sold','sales']
 
-      
-class UpdateInventoryForm(forms.ModelForm):
-    class Meta:
-        model=Inventory
-        fields=['inid','name','cost','quantity','quantity_sold','sales']

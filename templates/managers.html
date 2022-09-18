@@ -3,15 +3,22 @@
 
 <br>
     <h2>Managers</h2>
-    <hr>
-    <hr>
-    {% for item in all %}
-    {% comment %} ID: {{ item.id }} {% endcomment %}
-    Name: {{ item.name }}
-    Contact: {{item.phone}}
-    <hr>
-
-    {% endfor %}
-
+    <table class="table table-stripped table-bordered table-hovet">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for  item in all %}
+            <tr>
+                <th scope="row"> {{ item.name }}</th>
+                <th scope="row"> {{ item.phone }}</th>     
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

@@ -2,12 +2,27 @@
 {% block content %}
     <br>
     <h2>Employees</h2>
-    {% for item in all %}
-    ID: {{ item.id }}
-    Name: {{ item.name }}
-    Department: {{item.pname}}
-    <br>
-    <hr>
-    {% endfor %}
+    <br><br>
+<div class="content-section">
+<table class="table table-stripped table-bordered table-hovet">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Department</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for  item in all %}
+        <tr>
+            <th scope="row"> {{ item.id}}</th>
+            <th scope="row"> {{ item.name }}</th>
+            <th scope="row"> {{ item.pname }}</th>
+                       
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
