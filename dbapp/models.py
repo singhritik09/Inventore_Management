@@ -26,11 +26,7 @@ class Employee(models.Model):
     class Meta:
         managed = False
         db_table = 'employee'
-    # def __str__(self):
-    #     return self.name
-    
-        # query = 'SELECT * FROM employee
-        
+
 
 class Inventory(models.Model):
     inid=models.IntegerField(primary_key=True)
